@@ -16,12 +16,12 @@ const TestRolSwitch = () => {
   return (
     <div className="fixed bottom-6 right-20 bg-slate-900 text-white p-3 rounded-xl shadow-2xl flex items-center gap-2 z-50 text-xs border border-slate-700">
       <span className="text-gray-400">Rolni o'zgartirish:</span>
-      <button 
+      {/* <button 
         onClick={() => handleRoleChange('Admin', 'admin', '/admin')}
         className="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition font-medium text-emerald-400"
       >
         Admin
-      </button>
+      </button> */}
       <button 
         onClick={() => handleRoleChange('Azizbek (Usta)', 'usta', '/usta')}
         className="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition font-medium text-emerald-400"
