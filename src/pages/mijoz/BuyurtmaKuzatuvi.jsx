@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CheckCircle2, Clock, MapPin, Phone, MessageSquare, User, ShieldCheck, ArrowLeft } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Yozishma } from './Chat';
 
 export default function BuyurtmaKuzatuvi() {
   const navigate = useNavigate();
+  const [chatOpen, setChatOpen] = useState(false);
   const { state } = useLocation();
   const master = state?.master || { name: 'Sardorbek Yoldoshev', categoryName: 'Tajribali Santexnik', rating: 4.9 };
   const orderTitle = state?.category ? ({ cleaning: 'Cleaning', santexnika: 'Santexnika ta’mirlash', elektrik: 'Elektrik ishlari', konditsioner: 'Konditsioner xizmati', texnika: 'Maishiy texnika ta’miri', mebel: 'Mebel yig‘ish', isitish: 'Isitish tizimi', boshqa: 'Uy ta’miri' }[state.category] || state.category) : 'Santexnika ta’mirlash';
@@ -87,11 +89,13 @@ export default function BuyurtmaKuzatuvi() {
           <a href="tel:+998901234567" aria-label="Qo'ng'iroq qilish" className="p-3 rounded-2xl bg-emerald-50 text-[#00b894] hover:bg-emerald-100 transition shadow-sm">
             <Phone size={20} />
           </a>
-          <Link to="/mijoz/chat" aria-label="Chatga o'tish" className="p-3 rounded-2xl bg-blue-50 text-blue-600 hover:bg-blue-100 transition shadow-sm">
+          <button type="button" onClick={() => setChatOpen((open) => !open)} aria-expanded={chatOpen} aria-label="Usta bilan chatni ochish" className="p-3 rounded-2xl bg-blue-50 text-blue-600 hover:bg-blue-100 transition shadow-sm">
             <MessageSquare size={20} />
-          </Link>
+          </button>
         </div>
       </div>
+
+      {chatOpen && <Yozishma recipient="master" compact />}
 
       <div className="rounded-3xl border border-emerald-100 bg-emerald-50/70 p-5 sm:p-6">
         <h3 className="font-bold text-[#102f50]">Ish tugadimi?</h3>
